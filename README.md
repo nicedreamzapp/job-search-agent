@@ -92,6 +92,35 @@ This repo flips it. **You write your credentials once** — your real story, you
 
 ---
 
+## ✨ First-time setup (no terminal experience needed)
+
+**Never used the terminal before?** Run
+
+```bash
+python3 jobscout.py setup
+```
+
+and answer the questions in plain English. The wizard asks who you are,
+what you've done, and what kind of role you'd actually want — then writes
+a polished `credentials.md` file to the right place for you. Takes about
+5–10 minutes. Your answers save as you go, so you can quit and resume
+later.
+
+Prefer a webpage to the terminal? Run
+
+```bash
+python3 jobscout.py setup --web
+```
+
+and the wizard opens in your browser. Same questions, multi-step form,
+"Download credentials.md" button at the end. Or — if you'd rather not run
+any command at all — just open `wizard/index.html` straight in your
+browser (double-click it). Works fully offline, no internet needed.
+
+Full wizard guide: [`docs/SETUP_WIZARD.md`](docs/SETUP_WIZARD.md)
+
+---
+
 ## 🚀 Quick Start (3 minutes)
 
 ```bash
@@ -101,16 +130,16 @@ cd job-search-agent
 
 # 2. No deps to install — pure stdlib. Python 3.11+ is the only requirement.
 
-# 3. Copy the example configs into your XDG config dir
+# 3. Run the friendly setup wizard (plain-English Q&A, ~5 minutes):
+python3 jobscout.py setup
+# ...or, if you prefer to edit a file by hand:
 mkdir -p ~/.config/jobscout
 cp examples/credentials.example.md  ~/.config/jobscout/credentials.md
 cp examples/companies.example.json  ~/.config/jobscout/companies.json
-
-# 4. Edit them with your real story + your real allow-list
 $EDITOR ~/.config/jobscout/credentials.md
 $EDITOR ~/.config/jobscout/companies.json
 
-# 5. Run it
+# 4. Run the agent
 python3 jobscout.py
 ```
 

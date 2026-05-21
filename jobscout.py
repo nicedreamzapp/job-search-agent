@@ -139,9 +139,27 @@ def fetch_all(companies: list[CompanyEntry]) -> tuple[list[Job], dict[str, int]]
 
 
 def main(argv: list[str] | None = None) -> int:
-    """CLI entry point. Returns a Unix exit code."""
+    """CLI entry point. Returns a Unix exit code.
+
+    Special-case the `setup` subcommand before argparse runs: it has its
+    own arg parser and entirely separate question-driven flow, and we
+    don't want to muddy the main daily-run flags with wizard-specific
+    options. Users invoke it as `python3 jobscout.py setup [--web]`.
+    """
+    raw_args = sys.argv[1:] if argv is None else argv
+    if raw_args and raw_args[0] == "setup":
+        # Defer the import so a bad/missing setup.py never breaks daily runs.
+        from setup import main as setup_main
+
+        return setup_main(raw_args[1:])
+
     parser = argparse.ArgumentParser(
         description="Daily job-search agent. Fetches openings from configured companies, filters them, and scores fit with an LLM.",
+        epilog=(
+            "First-time setup? Run `python3 jobscout.py setup` for a friendly Q&A "
+            "wizard that writes your credentials.md for you. Add --web to do it "
+            "in a browser instead."
+        ),
     )
     parser.add_argument(
         "--dry-run",
