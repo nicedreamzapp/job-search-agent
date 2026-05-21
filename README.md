@@ -38,24 +38,13 @@
 ---
 
 <p align="center">
-  <h2 align="center">🎬 WATCH THE 60-SECOND DEMO</h2>
+  <h2 align="center">🎬 60-SECOND DEMO</h2>
   <p align="center">
-    <strong>A real morning briefing. 47 roles scored across 12 companies. 3 custom pitches drafted. 90 seconds, end to end, on a laptop.<br>
+    <strong>A real morning briefing. 47 roles scored across 12 companies. 3 custom pitches drafted. 60 seconds, end to end, on a laptop.<br>
     No cloud LLM. No SaaS. No "AI resume optimizer" hype.</strong>
   </p>
   <p align="center">
-    <a href="https://youtu.be/REPLACE_WITH_VIDEO_ID">
-      <img src="docs/assets/demo-thumbnail.png" width="720" alt="job-search-agent — 60-second walkthrough">
-    </a>
-  </p>
-  <p align="center">
-    <a href="https://youtu.be/REPLACE_WITH_VIDEO_ID">
-      <img src="https://img.shields.io/badge/▶_Watch_on_YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Watch on YouTube">
-    </a>
-    &nbsp;
-    <a href="https://www.youtube.com/@REPLACE_WITH_CHANNEL">
-      <img src="https://img.shields.io/badge/Subscribe-for_more_demos-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Subscribe">
-    </a>
+    <img src="docs/demo.svg" width="820" alt="job-search-agent — 60-second animated walkthrough"/>
   </p>
   <p align="center">
     <em>Built for anyone who's tired of LinkedIn's "200 applicants in 12 hours" job-board roulette.</em>
