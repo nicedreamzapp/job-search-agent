@@ -12,10 +12,10 @@ async def main():
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         context = await browser.new_context(
-            viewport={"width": 1280, "height": 720},
+            viewport={"width": 1920, "height": 1080},
             device_scale_factor=2,
             record_video_dir=OUT_DIR,
-            record_video_size={"width": 1280, "height": 720},
+            record_video_size={"width": 1920, "height": 1080},
         )
         page = await context.new_page()
         await page.goto(f"file://{HTML_PATH}")
