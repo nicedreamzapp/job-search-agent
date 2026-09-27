@@ -177,7 +177,7 @@ In `companies.json`, each entry needs a `slug` (the company's name in its job-bo
 python3 -m unittest discover -s tests
 ```
 
-30 tests covering the three connectors and the filters. Three of them hit the live job boards and only run with `JOBSCOUT_LIVE_TESTS=1`.
+60 tests covering the three connectors, the filters and the scorer (both AI backends mocked). Three of them hit the live job boards and only run with `JOBSCOUT_LIVE_TESTS=1`.
 
 ---
 
