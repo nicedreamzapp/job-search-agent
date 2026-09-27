@@ -24,7 +24,7 @@ HTTP_TIMEOUT_SECONDS = 10
 # Identify ourselves so ATS operators can see who is hitting their public
 # endpoints. Using a real URL here is good neighborliness — it lets them reach
 # out if our crawl pattern ever causes them trouble.
-USER_AGENT = "job-search-agent/0.1 (+https://github.com/your-org/job-search-agent)"
+USER_AGENT = "job-search-agent/0.1 (+https://github.com/nicedreamzapp/job-search-agent)"
 
 
 @dataclass

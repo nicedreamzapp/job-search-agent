@@ -39,7 +39,7 @@ we'd love to see it.
 ## Getting started
 
 ```bash
-git clone https://github.com/USER/job-search-agent.git
+git clone https://github.com/nicedreamzapp/job-search-agent.git
 cd job-search-agent
 python3 -m unittest discover tests
 ```

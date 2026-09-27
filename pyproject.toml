@@ -34,9 +34,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-org/job-search-agent"
-Repository = "https://github.com/your-org/job-search-agent"
-Issues = "https://github.com/your-org/job-search-agent/issues"
+Homepage = "https://github.com/nicedreamzapp/job-search-agent"
+Repository = "https://github.com/nicedreamzapp/job-search-agent"
+Issues = "https://github.com/nicedreamzapp/job-search-agent/issues"
 
 [project.scripts]
 jobscout = "jobscout:main"
