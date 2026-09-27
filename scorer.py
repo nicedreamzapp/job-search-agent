@@ -45,7 +45,7 @@ log = logging.getLogger(__name__)
 # expose OpenAI-compatible `/v1/chat/completions`. We POST there.
 DEFAULT_LOCAL_ENDPOINT = "http://localhost:8000"
 DEFAULT_LOCAL_MODEL = "mlx-community/Llama-3.1-8B-Instruct-4bit"
-DEFAULT_ANTHROPIC_MODEL = "claude-3-5-sonnet-latest"
+DEFAULT_ANTHROPIC_MODEL = "claude-sonnet-5"
 
 # We trim descriptions before scoring. ~6000 chars is roughly 1500 tokens —
 # enough to capture the meat of a posting while keeping each scoring call
@@ -270,10 +270,14 @@ def _score_via_anthropic(prompt: str, api_key: str, expect_field: str | None = N
     model = os.environ.get("JOBSCOUT_ANTHROPIC_MODEL", DEFAULT_ANTHROPIC_MODEL)
     url = "https://api.anthropic.com/v1/messages"
 
+    # No `temperature`: current Claude models (Sonnet 5 and later) reject
+    # sampling parameters with a 400. Thinking is disabled explicitly because
+    # these models otherwise think by default, and thinking tokens would eat
+    # into the small `max_tokens` budget a short JSON reply needs.
     body = json.dumps({
         "model": model,
         "max_tokens": 600,
-        "temperature": 0.2,
+        "thinking": {"type": "disabled"},
         "messages": [{"role": "user", "content": prompt}],
     }).encode("utf-8")
 
