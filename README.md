@@ -79,6 +79,39 @@ If you'd rather not touch a terminal for setup at all, double-click `wizard/inde
 
 ---
 
+## Windows
+
+The same code runs on Windows. I set this up and ran it on Windows 11. Install Python 3.11 or newer from [python.org](https://www.python.org/downloads/), then in Command Prompt:
+
+```bat
+git clone https://github.com/nicedreamzapp/job-search-agent.git
+cd job-search-agent
+
+rem Plain-English setup wizard, writes credentials.md for you
+python jobscout.py setup
+
+rem Or set it up by hand
+mkdir %USERPROFILE%\.config\jobscout
+copy examples\companies.example.json %USERPROFILE%\.config\jobscout\companies.json
+copy examples\filters.example.yml    %USERPROFILE%\.config\jobscout\filters.yml
+copy examples\credentials.example.md %USERPROFILE%\.config\jobscout\credentials.md
+notepad %USERPROFILE%\.config\jobscout\credentials.md
+
+rem Try the job boards first, no AI needed
+python jobscout.py --dry-run --companies-only=anthropic
+```
+
+If `python` isn't found, use `py -3` in its place.
+
+A few things that are different on Windows:
+
+- **Folders.** Config lives in `%USERPROFILE%\.config\jobscout` and results in `%USERPROFILE%\.local\state\jobscout`. `JOBSCOUT_CONFIG_DIR` and `JOBSCOUT_STATE_DIR` still override them.
+- **The model.** MLX only runs on Apple silicon, so the default model name won't exist on a Windows box. Use Ollama or another OpenAI-style server and set both variables, for example `setx JOBSCOUT_LLM_ENDPOINT http://localhost:11434` and `setx JOBSCOUT_LLM_MODEL llama3.1:8b`. Or set `ANTHROPIC_API_KEY` and skip the local model.
+- **A dry run marks roles as seen.** Delete `seen.json` in the state folder after testing, or your first real run will skip them.
+- **Daily runs.** `windows\run-jobscout.bat` does one run and appends the output to `jobscout.log` in the state folder. Point Task Scheduler at it, steps in [`docs/TASK_SCHEDULER_WINDOWS.md`](docs/TASK_SCHEDULER_WINDOWS.md).
+
+---
+
 ## Choosing the AI that does the scoring
 
 **Default: a model on your own machine.** The scorer talks to any server that speaks the OpenAI-style `/v1/chat/completions` API, such as `mlx_lm.server`, Ollama, llama.cpp's server, or vLLM.
@@ -167,7 +200,7 @@ In `companies.json`, each entry needs a `slug` (the company's name in its job-bo
 
 - **macOS:** launchd plist in [`docs/LAUNCHAGENT_MACOS.md`](docs/LAUNCHAGENT_MACOS.md)
 - **Linux:** systemd timer in [`docs/SYSTEMD_LINUX.md`](docs/SYSTEMD_LINUX.md)
-- **Windows:** point Task Scheduler at `python jobscout.py`
+- **Windows:** Task Scheduler and `windows\run-jobscout.bat`, steps in [`docs/TASK_SCHEDULER_WINDOWS.md`](docs/TASK_SCHEDULER_WINDOWS.md)
 
 ---
 
@@ -176,6 +209,8 @@ In `companies.json`, each entry needs a `slug` (the company's name in its job-bo
 ```bash
 python3 -m unittest discover -s tests
 ```
+
+On Windows it's `python -m unittest discover -s tests`. CI runs the suite on Linux, macOS and Windows.
 
 60 tests covering the three connectors, the filters and the scorer (both AI backends mocked). Three of them hit the live job boards and only run with `JOBSCOUT_LIVE_TESTS=1`.
 
