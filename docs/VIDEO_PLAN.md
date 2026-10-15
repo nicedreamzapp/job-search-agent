@@ -26,7 +26,7 @@ Rationale: README embeds compete with the reader's "scroll to install instructio
 
 ## 3. Production Budget Tier
 
-**Flagship-OSS tier — "no expenses spared" within the bounds of a one-person production.**
+**Flagship-OSS tier — "no expenses spared".**
 
 | Line item | Recommended pick | Why |
 |---|---|---|
