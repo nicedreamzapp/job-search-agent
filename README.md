@@ -23,9 +23,10 @@
   <em>60-second walkthrough (the screens in the video are mockups of the flow).</em>
 </p>
 
----
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s01-banner-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s01-banner-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s01-banner.svg" width="100%" alt="01. What it does. Every morning, from public job boards"></picture>
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s01-r1-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s01-r1-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s01-r1.svg" width="100%" alt="3,349 open roles pulled in a real dry run, 14 companies, 2026-09-27. 2,404 left after the example filters, before scoring. 80+ the score that earns a drafted ~200-word pitch."></picture>
 
-## What it does
+### What it does
 
 Every morning it:
 
@@ -39,9 +40,12 @@ You read the results. You decide what to apply to. It never applies for you.
 
 A real dry run on 2026-09-27 against the 14 companies in `examples/companies.example.json` pulled **3,349 open roles**. The example filters cut that to 2,404 before scoring. Your own company list and filters decide how big that number is.
 
----
+<img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s01-rule.svg" width="100%" alt="">
 
-## Quick start
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s02-banner-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s02-banner-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s02-banner.svg" width="100%" alt="02. Quick start. Mac, Linux or Windows"></picture>
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s02-r1-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s02-r1-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s02-r1.svg" width="100%" alt="Python 3.11+. Nothing else to install. Setup wizard. Plain-English, writes credentials.md for you in about 5 to 10 minutes. Dry run first. Try the job boards with no AI needed."></picture>
+
+### Quick start
 
 Needs Python 3.11 or newer. Nothing else to install.
 
@@ -77,9 +81,7 @@ If you'd rather not touch a terminal for setup at all, double-click `wizard/inde
 | `--config-dir DIR` | Use a different config folder. |
 | `-v`, `--verbose` | Show why each dropped role was dropped. |
 
----
-
-## Windows
+### Windows
 
 The same code runs on Windows. I set this up and ran it on Windows 11. Install Python 3.11 or newer from [python.org](https://www.python.org/downloads/), then in Command Prompt:
 
@@ -110,9 +112,12 @@ A few things that are different on Windows:
 - **A dry run marks roles as seen.** Delete `seen.json` in the state folder after testing, or your first real run will skip them.
 - **Daily runs.** `windows\run-jobscout.bat` does one run and appends the output to `jobscout.log` in the state folder. Point Task Scheduler at it, steps in [`docs/TASK_SCHEDULER_WINDOWS.md`](docs/TASK_SCHEDULER_WINDOWS.md).
 
----
+<img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s02-rule.svg" width="100%" alt="">
 
-## Choosing the AI that does the scoring
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s03-banner-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s03-banner-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s03-banner.svg" width="100%" alt="03. Scoring, results and how it works. Your model, your machine"></picture>
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s03-r1-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s03-r1-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s03-r1.svg" width="100%" alt="A local model by default. Any server that speaks the OpenAI-style chat completions API. Anthropic is optional. Only used if you set ANTHROPIC_API_KEY yourself. One JSON file a day. Every scored role, best first, with the reason."></picture>
+
+### Choosing the AI that does the scoring
 
 **Default: a model on your own machine.** The scorer talks to any server that speaks the OpenAI-style `/v1/chat/completions` API, such as `mlx_lm.server`, Ollama, llama.cpp's server, or vLLM.
 
@@ -123,9 +128,7 @@ A few things that are different on Windows:
 
 **Optional: the Anthropic API.** If `ANTHROPIC_API_KEY` is set, the scorer uses Claude instead (pick the model with `JOBSCOUT_ANTHROPIC_MODEL`). This only happens when you set that variable yourself.
 
----
-
-## Where the results go
+### Where the results go
 
 | File | What's in it |
 |---|---|
@@ -134,9 +137,7 @@ A few things that are different on Windows:
 
 Set `JOBSCOUT_STATE_DIR` to put these somewhere else. If you want the top 10 sent to your own dashboard, set `JOBSCOUT_HQ_URL` (plus `JOBSCOUT_HQ_TOKEN` if it needs a bearer token) and the agent will POST them there after each run.
 
----
-
-## How it works
+### How it works
 
 ```
 companies.json ──▶ connectors (Ashby · Greenhouse · Lever)
@@ -164,9 +165,12 @@ credentials.md ──▶ scorer: 0-100 + reason ──▶ pitch for scores ≥ 8
 
 More detail in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 
----
+<img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s03-rule.svg" width="100%" alt="">
 
-## Privacy
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s04-banner-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s04-banner-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s04-banner.svg" width="100%" alt="04. Privacy, tuning and job boards. Stays on your machine"></picture>
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s04-r1-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s04-r1-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s04-r1.svg" width="100%" alt="No telemetry. No account. credentials.md stays on your machine. Edit the prompts. Change what counts as a good fit and the pitch voice. Ashby, Greenhouse, Lever. Public job-board APIs, no login."></picture>
+
+### Privacy
 
 `credentials.md` is the most personal file in your job search, so it stays on your machine.
 
@@ -174,17 +178,13 @@ More detail in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 - The Anthropic fallback and the webhook are both off until you set their environment variables.
 - There's no telemetry and no account.
 
----
-
-## Tuning it
+### Tuning it
 
 - **Scoring:** edit [`prompts/scoring.md`](prompts/scoring.md) to change what counts as a good fit. Reference: [`docs/CUSTOMIZE_SCORING.md`](docs/CUSTOMIZE_SCORING.md).
 - **Pitches:** edit [`prompts/pitch.md`](prompts/pitch.md) to change the voice and length.
 - **Filters:** every key in [`examples/filters.example.yml`](examples/filters.example.yml) is a list of case-insensitive regexes. `require_locations_in` is the one allow-list; the rest drop matches.
 
----
-
-## Supported job boards
+### Supported job boards
 
 | ATS | Module | Public endpoint |
 |---|---|---|
@@ -194,17 +194,18 @@ More detail in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 
 In `companies.json`, each entry needs a `slug` (the company's name in its job-board URL) and an `ats`. `name` is optional. To add another board, write one file in `connectors/` and register it in the `CONNECTORS` table in `jobscout.py`. See [`docs/ADD_A_CONNECTOR.md`](docs/ADD_A_CONNECTOR.md).
 
----
+<img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s04-rule.svg" width="100%" alt="">
 
-## Run it every morning
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s05-banner-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s05-banner-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s05-banner.svg" width="100%" alt="05. Daily runs, tests and roadmap. Schedule it, test it, help build it"></picture>
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s05-r1-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s05-r1-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s05-r1.svg" width="100%" alt="60 tests, both AI backends mocked. 3 platforms in CI: Linux, macOS and Windows. MIT license."></picture>
+
+### Run it every morning
 
 - **macOS:** launchd plist in [`docs/LAUNCHAGENT_MACOS.md`](docs/LAUNCHAGENT_MACOS.md)
 - **Linux:** systemd timer in [`docs/SYSTEMD_LINUX.md`](docs/SYSTEMD_LINUX.md)
 - **Windows:** Task Scheduler and `windows\run-jobscout.bat`, steps in [`docs/TASK_SCHEDULER_WINDOWS.md`](docs/TASK_SCHEDULER_WINDOWS.md)
 
----
-
-## Tests
+### Tests
 
 ```bash
 python3 -m unittest discover -s tests
@@ -214,9 +215,7 @@ On Windows it's `python -m unittest discover -s tests`. CI runs the suite on Lin
 
 60 tests covering the three connectors, the filters and the scorer (both AI backends mocked). Three of them hit the live job boards and only run with `JOBSCOUT_LIVE_TESTS=1`.
 
----
-
-## Roadmap
+### Roadmap
 
 - [ ] A readable morning briefing (markdown or email) alongside the JSON
 - [ ] Workday, SmartRecruiters, Recruitee and Personio connectors
@@ -224,14 +223,14 @@ On Windows it's `python -m unittest discover -s tests`. CI runs the suite on Lin
 - [ ] Multiple profiles, so one role can be scored against different versions of you
 - [ ] Top roles on a calendar feed by apply deadline
 
----
-
-## Contributing
+### Contributing
 
 New connectors, better prompts and `credentials.md` examples for non-engineering roles are the most useful contributions. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 Built on public job-board APIs and Apple's MLX. Full list in [`CREDITS.md`](CREDITS.md).
 
-## License
+### License
 
 MIT
+
+<img src="https://raw.githubusercontent.com/nicedreamzapp/job-search-agent/main/assets/readme/s05-rule.svg" width="100%" alt="">
