@@ -1,6 +1,6 @@
 # Design Brief — for a real designer
 
-**Read this first.** The SVGs in this folder are placeholders, hand-coded by an AI as a starting point. They are intentional and shippable as a v0 — they will look reasonable in a GitHub README, in a browser tab, and on an OG card. But they are not a *crafted* identity. If `job-search-agent` grows beyond the first few hundred stars, hire a real designer and hand them this brief.
+**Read this first.** The SVGs in this folder are placeholders, hand-coded as a starting point. They are intentional and shippable as a v0 — they will look reasonable in a GitHub README, in a browser tab, and on an OG card. But they are not a *crafted* identity. If `job-search-agent` grows beyond the first few hundred stars, hire a real designer and hand them this brief.
 
 ---
 
